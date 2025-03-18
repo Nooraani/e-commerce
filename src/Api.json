@@ -1,0 +1,52 @@
+[
+   {  "title":"formal",
+      "image":"/image/1.jpeg",
+      "price":12
+   },
+   {  
+      "title":"formal",
+      "image":"/image/2.jpeg",
+      "price":16
+   },
+   {  
+      "title":"formal",
+      "image":"/image/3.jpeg",
+      "price":9
+   },
+   {  
+      "title":"formal",
+      "image":"/image/4.jpeg",
+      "price":7
+   },
+   {  
+      "title":"formal",
+      "image":"/image/5.jpeg",
+      "price":7
+   },
+   {  
+      "title":"formal",
+      "image":"/image/6.jpeg",
+      "price":9
+   },
+   {  "title":"formal",
+      "image":"/image/7.jpeg",
+      "price":10
+   },
+   {  
+      "title":"formal",
+      "image":"/image/8.jpeg",
+      "price":12
+   },
+   { 
+      "title":"formal", 
+      "image":"/image/9.jpeg",
+      "price":13
+   },
+   { 
+      "title":"formal", 
+      "image":"/image/10.jpeg",
+      "price":3
+   }
+
+]
+

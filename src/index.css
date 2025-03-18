@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.header-Cl{
+  background-color: #ffd700;
+}
+.box .InputBox{
+  position: relative;
+}
+/* .box .InputBox input{
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  color: #151111;
+  letter-spacing: 1px;
+  background: transparent;
+  outline: none;
+} */
+/* .box .InputBox label{
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  letter-spacing: 1px;
+  padding: 10px 0;
+  font-size: 16px;
+  color:#fff;
+  transition: 0.5s;
+} */
+
+/* .box .InputBox input:focus ~ label,
+.box .InputBox input:valid ~ label
+{
+  top: -20px;
+  left: 0;
+  color: #12181b;
+
+} */
+
+
+/* body{
+  background-color: #f1f1f1;
+} */
+/* label{
+  margin-bottom: 0.3rem;
+  font-size:1.04rem;
+  font-weight: bold;
+}
+input{
+  background-color: rgb(207, 188, 188);
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.2rem;
+  margin-bottom: 0.8rem;
+  color: #2a2929;
+  font-weight: 600;
+}
+button{
+  background-color: rgb(111, 88, 133);
+  padding: 0.6rem;
+  border-radius: 0.6rem;
+}
+.main_div{
+  width: 100%;
+  height: 100rem;
+  position: relative;
+}
+.box{
+  width: 20rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+ transform: translate(-25%,-25%);
+ padding: 50px;
+ background-color: cadetblue;
+}
+.box h1{
+  margin-bottom: 30px;
+  color: #fff;
+  text-align: center;
+  text-transform: capitalize;
+}
+.box .InputBox{
+  position: relative;
+}
+.box .InputBox input{
+     width: 100%;
+     padding: 10px;
+     color: #151111;
+     letter-spacing: 1px;
+     background: transparent;
+     outline: none;
+}
+.box .InputBox label{
+  position: absolute;
+  top: 0;
+  left: 0;
+  letter-spacing: 1px;
+  padding: 10px 0;
+  font-size: 16px;
+  color:#fff;
+  transition: 0.5s;
+}
+.box .InputBox input:focus ~ label{
+  top: -20px;
+  left: 0;
+  color: #12181b;
+
+}
+.box .password{
+  position: relative;
+}
+.box .password input{
+  width: 100%;
+  padding: 10px;
+  color: #151111;
+  letter-spacing: 1px;
+  background: transparent;
+  outline: none;
+}
+.box .password label{
+  position: absolute;
+  top: 0;
+  left: 0;
+  letter-spacing: 1px;
+  padding: 10px 0;
+  font-size: 16px;
+  color:#fff;
+  transition: 0.5s;
+}
+.box .password input:focus ~ label{
+  top: -20px;
+  left: 0;
+  color: #12181b;
+
+} */
