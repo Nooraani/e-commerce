@@ -1,102 +1,73 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-import './index.css'
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import axios from 'axios';
+
 const Register88 = () => {
-    const [email, setemail] = useState("");
-    const [Name, setName] = useState("");
-    const [Password,setpassword]=useState("")
-    const [phone, setPhone] = useState("");
-    const NaviGAte = useNavigate();
+    const navigate = useNavigate();
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        password: '',
+    });
 
-    // let name = localStorage.getItem('Name')
-    // ? localStorage.getItem('Name') : Name;
-    // let Email = localStorage.getItem('email')
-    // ? localStorage.getItem('email') : email;
+    const handleChange = (e) => {
+        const { name, value } = e.target;
 
-    //Store Radio button 
+        setFormData((prevData) => ({ ...prevData, [name]: value }));
+    };
 
-   
-
-
-    
-
-
-
-    const HandleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        let name = localStorage.getItem('Name')
-            ? localStorage.getItem('Name') : localStorage.setItem("Name", Name);
-        let Email = localStorage.getItem('email')
-            ? localStorage.getItem('email') : localStorage.setItem("email", email);
-        let Password1 = localStorage.getItem('Password')
-            ? localStorage.getItem('Password') : localStorage.setItem("Password", Password);
-        let PhoneNo = localStorage.getItem('phone')
-            ? localStorage.getItem('phone') : localStorage.setItem("phone", phone);  
+      
+        try {
+          const checkResponse = await axios.post('http://localhost:5000/Check-Value', {
+            email: formData.email,
+            name: formData.name,
+          });
     
-      if(Name !=="" && Password !== "" && phone !=="" && email !=="" ){
-        if (Name === name  && Email === email) {
-            NaviGAte('/Project88')
-            toast.success("SuccessFull Register")
-        }
-      }
-       else if(Name ==="" && Password ===""){
-        toast.error("please fill all details")
-       }
-        
-        else {
-            toast.error("invalid Input")
-            console.log("error")
-        }
+        const Data = await axios.post('http://localhost:5000/Project88', formData);
+        console.log("Backend Response:", Data);
 
-    }
+          toast.success('Registration successful!');
+          navigate('/Cart');
+        } catch (error) {
+          console.error('Error:', error);
+      
+          const errorMsg =
+            error.response?.data?.error || error.response?.data?.message || 'Something went wrong';
+      
+          toast.error(errorMsg);
+        }
+      };
+      
+
     return (
-        <>
-        <div className='flex justify-center mt-40'>
-            <h2 className='font-bold font-serif'>Register</h2>
-        </div>
-            <div className='max-w-full flex justify-center  '>
-            
-                <div className='flex bg-slate-400 justify-center items-center font-bold rounded-xl  relative '>
-                    
-                    <div className='mt-8 flex mr-12 sm:max-w-sm'>
-                        <form onSubmit={HandleSubmit} className='' >
-                            <div className='box p-3  relative ml-10' >
-                                <div className='InputBox '>
-                                    <label className=' hover:text-yellow-100'>UserName</label>
-                                    </div>
-                                    <input type='text' className='rounded hover:bg-yellow-100 ' placeholder='enter username' value={Name} onChange={e => setName(e.target.value)} />
-
-                                
-                                <div className='InputBox mt-2'>
-                                    <label className='mr-14 hover:text-yellow-100'>Email</label>
-                                    </div>
-                                    <input type='email' className='rounded hover:bg-yellow-100 ' placeholder='enter email address' value={email} onChange={e => setemail(e.target.value)} />
-
-                                
-                                <div className='InputBox mt-2'>
-                                    <label className='mr-4 hover:text-yellow-100'>Phone No </label>
-                                    </div>
-                                    <input type='number' className='rounded hover:bg-yellow-100 ' placeholder='enter Phone No' value={phone} onChange={e => setPhone(e.target.value)} />
-
-                                
-                                <div className='InputBox' >
-                                    <label className='mr-5 mt-2 hover:text-yellow-100 '>Password </label>
-                                    </div>
-                                    <input type='pasword' className='mt-1 rounded hover:bg-yellow-100' placeholder='enter password' value={Password} onChange={e => setpassword(e.target.value)} />
-
-                        
-
-                                <div className='flex  mt-3 mx-16'>
-                                    <button type='submit' className='max-w-md bg-yellow-300 px-4 rounded-xl'>login</button>
-                                </div>
-                            </div>
-                        </form>
+        <div className='flex justify-center items-center min-h-screen shadow-black  bg-gray-100'>
+            <div className='bg-[#cebaa8]  p-8 rounded-xl shadow-lg w-full max-w-md'>
+                <h2 className='text-2xl font-bold text-center text-gray-800 mb-6'>Register</h2>
+                <form onSubmit={handleSubmit} className='space-y-4'>
+                    <div>
+                        <label className='block text-gray-600 mb-1'>Username</label>
+                        <input type='text' name='name' className='w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-400' placeholder='Enter Username' onChange={handleChange} />
                     </div>
-                </div>
+                    <div>
+                        <label className='block text-gray-600 mb-1'>Email</label>
+                        <input type='email' name='email' className='w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-400' placeholder='Enter Email Address' onChange={handleChange} />
+                    </div>
+                  
+                    <div>
+                        <label className='block text-gray-600 mb-1'>Password</label>
+                        <input type='password' name='password' className='w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-400' placeholder='Enter Password' onChange={handleChange} />
+                    </div>
+                    <button type='submit' className='w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600'>Register</button>
+                </form>
+                <p className='text-center text-gray-600 mt-4'>
+                    Already have an account? <Link to='/Login' className='text-blue-500'>Login</Link>
+                </p>
             </div>
-        </>
-    )
-}
+        </div>
+    );
+};
 
-export default Register88
+export default Register88;
